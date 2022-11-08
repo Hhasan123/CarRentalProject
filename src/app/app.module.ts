@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { CarDetailsComponent } from './components/carDetails/car-details/car-details.component';
+import { RentDetailsComponent } from './components/rentDetails/rent-details/rent-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarComponent,
     BrandComponent,
-    NaviComponent
+    NaviComponent,
+    CarDetailsComponent,
+    RentDetailsComponent
   ],
   imports: [
     BrowserModule,
