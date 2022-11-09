@@ -5,21 +5,21 @@ import { RentDetailServiceService } from 'src/app/services/rentDetailsService/re
 @Component({
   selector: 'app-rent-details',
   templateUrl: './rent-details.component.html',
-  styleUrls: ['./rent-details.component.css']
+  styleUrls: ['./rent-details.component.css'],
 })
 export class RentDetailsComponent implements OnInit {
-  rentDetails:RentDetails[]=[]
-  dataLoaded=false;
+  rentDetails: RentDetails[] = [];
+  dataLoaded = false;
 
-  constructor(private rentDetailService:RentDetailServiceService) { }
+  constructor(private rentDetailService: RentDetailServiceService) {}
 
   ngOnInit(): void {
+    this.getRentDetails();
   }
-  getRentDetails(){
-this.rentDetailService.getRentDetails().subscribe(response=>{
-  this.rentDetails=response.data
-  this.dataLoaded=true;
-})
+  getRentDetails() {
+    this.rentDetailService.getRentDetails().subscribe((response) => {
+      this.rentDetails = response.data;
+      this.dataLoaded = true;
+    });
   }
-
 }

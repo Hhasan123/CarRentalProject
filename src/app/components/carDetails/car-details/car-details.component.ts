@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CarDetails } from 'src/app/models/carDetails/carDetails';
 import { CarDetailService } from 'src/app/services/carDetailService/car-detail.service';
 
@@ -13,14 +14,13 @@ dataLoaded=false
   constructor(private carDetailService:CarDetailService) { }
 
   ngOnInit(): void {
-    this.getCarDetails();
+        this.getCarDetails()
   }
+
   getCarDetails(){
 this.carDetailService.getCarDetails().subscribe(response=>{
   this.carDetails=response.data
   this.dataLoaded=true;
 })
   }
-
-
 }

@@ -2,22 +2,43 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+    <label for="filterText" class="form-label">Araç ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Look! I can help you to look for whatever you want of course about cars">
+  </div>
+
+<div *ngIf="filterText" class="alert alert-primary">
+    {{filterText}} you looked for.
+</div>
+
+<h5>Car table</h5>
 <table *ngIf="dataLoaded==true" class="table">
     <thead>
         <tr>
             <th>Car name</th>
             <th>Model year</th>
             <th>Daily price</th>
+            <th>Daily price with taxes</th>
             <th>Description</th>
             <th></th>
         </tr>
     </thead>
-    <tr *ngFor="let car of cars">
-        <td>{{car.name}}</td>
-        <td>{{car.modelYear}}</td>
-        <td>{{car.dailyPrice}}</td>
-        <td>{{car.description}}</td>
-        <!-- <td>{{car.brandId}}</td>  -->
-        <!-- <td>{{car.colorId}}</td>  -->
-    </tr>
+
+
+    <tbody>
+        <tr *ngFor="let car of cars | filterPipe:filterText" >
+            <td>{{car.name |uppercase}}</td>
+            <td>{{car.modelYear}}</td>
+            <td>{{car.dailyPrice |currency}}</td>
+            <td>{{car.dailyPrice |vatAdded:18 |currency}}</td>
+            <td>{{car.description}}</td>
+            <td><button (click)="addToCart(car)" type="button" class="btn btn-success">Add to cart</button></td>
+            <!-- <td>{{car.brandId}}</td>  -->
+            <!-- <td>{{car.colorId}}</td>  -->
+        </tr>
+    </tbody>
+    
 </table>
+
+    
+

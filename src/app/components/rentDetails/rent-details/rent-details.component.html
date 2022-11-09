@@ -2,7 +2,7 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 
-<table *ngIf="dataLoaded==true" class="table">
+<table>
     <thead>
         <tr>
             <th>Rent id</th>
@@ -13,12 +13,13 @@
             <th>Return date</th>
         </tr>
     </thead>
+    
     <tr *ngFor="let rentDetail of rentDetails">
         <th>{{rentDetail.rentId}}</th>
-        <th>{{rentDetail.firstName}}</th>
+        <th>{{rentDetail.firstName+" "+rentDetail.lastName}}</th>
         <th>{{rentDetail.brandName}}</th>
         <th>{{rentDetail.modelName}}</th>
         <th>{{rentDetail.rentDate}}</th>
         <th>{{rentDetail.returnDate}}</th>
     </tr>
-</table>
+</table> 
